@@ -19,6 +19,7 @@ app.use(cors())
 
 //routes
 app.use('/api/user',require('./routes/userRouter'))
+app.use('/api/todo',require('./routes/TodoRouter'))
 app.use("/api/test",require('./routes/TestRouter'))
 
 
