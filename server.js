@@ -1,9 +1,12 @@
 const express = require('express');
 const morgan=require('morgan')
 const cors=require('cors')
-const dotenv=require('dotenv')
+const dotenv=require('dotenv');
+const ConnectDB = require('./config/db');
 
 dotenv.config()
+
+ConnectDB();
 
 
 const app=express()
@@ -15,10 +18,12 @@ app.use(cors())
 
 
 //routes
+app.use('/api/user',require('./routes/userRouter'))
+app.use('/api/todo',require('./routes/TodoRouter'))
 app.use("/api/test",require('./routes/TestRouter'))
 
 
-app.get('/api/home',(req,res)=>{
+app.get('/api/',(req,res)=>{
     res.status(200).send(`<h1>Node.js startred on Homepage</h1>`)
 })
 
